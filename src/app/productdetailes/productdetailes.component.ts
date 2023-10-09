@@ -2,6 +2,10 @@ import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../cart.service';
+import { ViewportScroller } from '@angular/common';
+import { WishlistService } from '../wishlist.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-productdetailes',
@@ -9,6 +13,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./productdetailes.component.scss']
 })
 export class ProductdetailesComponent implements OnInit {
+
+
+  constructor(private _ActivatedRoute:ActivatedRoute,public _CartService:CartService,public _ProductService:ProductService,private toastr:ToastrService){
+  
+  }
 
 detailes:any;
 img:any
@@ -40,9 +49,7 @@ customOptions: OwlOptions = {
   autoplayTimeout: 900, // Set autoplay interval (in milliseconds)
   autoplayHoverPause: true // Pause autoplay when hovering over the carousel
 };
-  constructor(public _ProductService:ProductService,private _ActivatedRoute:ActivatedRoute){
 
-  }
 
   ngOnInit(): void {
     //هنا بجيب الاي دي اللي خدته من اليو ار ال فلازم اكتب الاي دي بنفس الاسم اللي كتبته في اليو ار ال
@@ -62,5 +69,38 @@ customOptions: OwlOptions = {
       }
     )
   }
+
+
+  showSuccess() {
+    this.toastr.success('Product Added Successfully To Your Cart ');
+  }
+  
+  addProductToCart(pId:any){
+ 
+  
+    this._CartService.addProductToCart(pId).subscribe({
+  
+      next:(response)=>{
+        
+      
+        this._CartService.numOfCartItems.next(response.numOfCartItems)
+      
+      
+        console.log(response)
+        this.showSuccess()
+        console.log(response.numOfCartItems)
+      },
+      error:(err)=>{console.log(err)},
+      complete:()=>{console.log('done')}
+    })
+  
+  
+  }
+  
+ 
+    
+  
+
+  
 
 }
