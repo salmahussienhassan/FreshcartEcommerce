@@ -31,9 +31,9 @@ if(form.valid){
     {
       next:(res)=>{
       
-        let userId:any=res.session.client_reference_id
-        localStorage.setItem('userId',userId)
-        // this.redirectToLocation(res.session.url)
+       
+       
+        this.redirectToLocation(res.session.url)
         console.log(res.session.client_reference_id)
         console.log(res)
       },
