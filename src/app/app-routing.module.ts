@@ -17,7 +17,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/home',pathMatch:'full'},
+  // {path:'',redirectTo:'/home',pathMatch:'full'},
   {path:'home',component:HomeComponent,canActivate:[routeGuard]},
   {path:'cart',component:CartComponent,canActivate:[routeGuard]},
   {path:'products',component:ProductsComponent,canActivate:[routeGuard]},
@@ -39,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
