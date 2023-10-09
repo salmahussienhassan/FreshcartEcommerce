@@ -35,11 +35,12 @@ return this._HttpClient.post('https://ecommerce.routemisr.com/api/v1/auth/signup
       }
 
       logout(){
+        this.isLogin.next(false)
         localStorage.removeItem('token')
        
         localStorage.removeItem('userId')
         this._Router.navigate(['/login'])
-        this.isLogin.next(false)
+       
      
       }
 

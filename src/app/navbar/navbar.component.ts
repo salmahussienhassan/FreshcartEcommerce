@@ -64,6 +64,8 @@ this._WishlistService.wishlistCount.subscribe(
 }
 
 makeLogout(){
+  this.enableNavbar=false
+ this._AuthenticationService.isLogin.next(false)
   this._AuthenticationService.logout()
 }
 
