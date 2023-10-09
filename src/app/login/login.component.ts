@@ -16,7 +16,7 @@ export class LoginComponent {
   
   
   constructor(public _AuthenticationService:AuthenticationService,public _Router:Router){
-  
+  _AuthenticationService.isLogin.next(false)
   }
   
     loginForm=new FormGroup({
