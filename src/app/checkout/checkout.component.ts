@@ -30,7 +30,9 @@ if(form.valid){
   this._CartService.onlinePayment(this.cartId,form.value).subscribe(
     {
       next:(res)=>{
-       
+      
+        let userId:any=res.session.client_reference_id
+        localStorage.setItem('userId',userId)
         this.redirectToLocation(res.session.url)
         console.log(res.session.client_reference_id)
         console.log(res)

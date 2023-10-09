@@ -28,6 +28,7 @@ ngOnInit(): void {
    
     this.localstorageToken=localStorage.getItem('token')
     this.userData=jwtDecode(this.localstorageToken)
+    console.log(this.userData)
     this.userName=this.userData.name
     this._CartService.getLogedUserCart().subscribe({
       next:(res)=>{
