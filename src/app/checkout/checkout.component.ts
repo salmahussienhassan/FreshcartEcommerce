@@ -30,8 +30,6 @@ if(form.valid){
   this._CartService.onlinePayment(this.cartId,form.value).subscribe(
     {
       next:(res)=>{
-      
-       
        
         this.redirectToLocation(res.session.url)
         console.log(res.session.client_reference_id)
