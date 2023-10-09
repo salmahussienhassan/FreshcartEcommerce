@@ -1,0 +1,50 @@
+<div class="container py-5 my-5 ">
+    <div class="row py-5 bg-body-secondary rounded-3 shadow-sm ">
+<h2 class="text-center mb-3">Shop Cart</h2>
+
+<div class="col-md-12" *ngFor="let product of cartArray">
+
+
+    <div class="row">
+
+<div class="col-md-9 p-3 ">
+    <div class="d-flex gap-3 justify-content-start align-items-center">
+        <img  [src]="product.product.imageCover" alt="">
+        <div>
+        <p>{{product.product.title}}</p>
+        <h6 class="text-main">price: {{product.price | currency: 'EGP '}}</h6>
+        <button (click)="deleteItem(product.product.id)" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i>  Remove</button>
+        </div>
+        
+    </div>
+
+
+</div>
+
+<div class="col-md-3 d-flex justify-content-center align-items-center p-3">
+    <div class="d-flex justify-content-center align-items-center gap-3">
+    
+<h5 (click)="updatedCount(product.product.id,product.count+1)" class="rounded-3 bord px-2">+</h5>
+<h5 >{{product.count}}</h5 >
+<h5 (click)="updatedCount(product.product.id,product.count-1)" class="rounded-3 bord px-2">-</h5 >
+</div>
+
+</div>
+
+    </div>
+
+    <div class="line"></div>
+</div>
+
+<div class="col-md-12 mt-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="text-main"> Toltal Price:{{totalPrice | currency:'EGP '}}</h4>
+        <button class="btn btn-outline-danger" (click)="clearCart()">Clear Cart</button>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <button [routerLink]="['/checkout',cartId]" routerLinkActive="router-link-active"  class="bg-main btn text-white w-50 m-auto my-3 d-flex align-items-center justify-content-center">Online Payment</button>
+</div>
+    </div>
+</div>

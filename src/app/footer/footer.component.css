@@ -1,0 +1,12 @@
+.btn-info {
+  background-color: var(--main-color) !important;
+  border: var(--main-color) !important;
+}
+
+.copyright {
+  border-top: 1px solid gainsboro !important;
+}
+
+a:hover {
+  color: var(--main-color);
+}/*# sourceMappingURL=footer.component.css.map */

@@ -1,0 +1,36 @@
+<div  class="container-fluid py-5 mt-5">
+    <div  *ngIf="whishlistItems.length !==0 else empty" class="row g-4 py-3">
+        <div    *ngFor="let p of whishlistItems" class="col-md-2 ">
+            <div class="item product rounded-3 p-3 position-relative ">
+              <button (click)="removeItem(p._id)" class="btn  position-absolute top-0 end-0"><i class="fa-solid text-main fs-2 fa-heart-crack"></i></button>
+                <img (click)="scrollToTop()" [routerLink]="['/productdetailes',p._id,p.title]" class="img-fluid"  [src]="p.imageCover" alt="">
+                <p class="text-main ">{{p.category.name}}</p>
+                <p class="fw-bold">{{p.title.split(' ').slice(0, 2).join(' ')}}</p>
+                <div class=" d-flex justify-content-between">
+                    <p>{{ p.price | currency:'EGP ' }} </p>
+
+                    <ul  class="d-flex mb-0  list-unstyled">
+                        <li *ngFor="let num of [1, 2, 3, 4, 5]">
+                            <i *ngIf="num <= p.ratingsAverage"class="fa-solid rating-color fa-star"></i>
+                        </li>
+
+                        <li *ngIf="p.ratingsAverage % 1 != 0">
+                            <i class="fas fa-star-half rating-color"></i>
+                          </li>
+                          <span> {{p.ratingsAverage}}</span>
+                    </ul>
+                    
+                
+                </div>
+                <button class="btn bg-main text-white w-100">+ Add To Cart</button>
+            </div>
+        
+        
+        </div>
+        </div>
+
+        <ng-template #empty>
+            <h1 class="my-5 display-1 text-center">Your Orders Is Empty...</h1>
+            </ng-template>
+</div>
+

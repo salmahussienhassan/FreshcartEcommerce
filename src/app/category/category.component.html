@@ -1,0 +1,11 @@
+<div  class="container py-5 mt-5">
+    <div class="row g-3">
+        <div *ngFor="let cat of allCat" class="col-md-3 " (click)="scrollToTop()" [routerLink]="['/categorydetailes',cat._id,cat.name]">
+            <div class="item  d-flex justify-content-center align-items-center flex-column rounded-3">
+                <img class="rounded-3 w-100" [src]="cat.image" alt="">
+                <p class="text-center text-main mt-3">{{cat.name}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

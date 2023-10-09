@@ -1,0 +1,47 @@
+<div class="container mt-5 py-5">
+    <div  class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-3">
+
+            <owl-carousel-o [options]="customOptions" carouselClass="owl-theme">
+                <ng-container class="cont"  *ngFor="let slide of img; ">
+                  <ng-template carouselSlide >
+                    <img [src]="slide">
+                   
+                  </ng-template>
+                </ng-container>
+                <div class="owl-nav">
+                  <button class="owl-prev" type="button" title="Previous"><i class="fa fa-angle-left"></i></button>
+                  <button class="owl-next" type="button" title="Next"><i class="fa fa-angle-right"></i></button>
+                </div>
+              </owl-carousel-o>
+
+           
+        </div>
+        <div class="col-md-9 ">
+           
+                <h6 class="fw-bold">{{detailes.title}}</h6>
+                <p>{{detailes.description}}</p>
+                <p>{{detailes.category.name}}</p>
+                <div class=" d-flex justify-content-between">
+                    <p>{{ detailes.price | currency:'EGP ' }} </p>
+
+                    <ul  class="d-flex mb-0  list-unstyled">
+                        <li *ngFor="let num of [1, 2, 3, 4, 5]">
+                            <i *ngIf="num <= detailes.ratingsAverage"class="fa-solid rating-color fa-star"></i>
+                        </li>
+
+                        <li *ngIf="detailes.ratingsAverage % 1 != 0">
+                            <i class="fas fa-star-half rating-color"></i>
+                          </li>
+                          <span> {{detailes.ratingsAverage}}</span>
+                    </ul>
+                    
+                
+                </div>
+                <button class="btn text-white w-100 bg-main"> <i class="fa-solid fa-plus"></i> Add To Cart</button>
+          
+            
+        </div>
+    </div>
+</div>
+

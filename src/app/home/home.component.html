@@ -1,0 +1,83 @@
+
+<section>
+
+  <div  class=" py-5 my-5" >
+    <section class="rounded overflow-hidden">
+        <div class="row g-0">
+          <div class="col-md-9">
+            <owl-carousel-o [options]="mainSlider">
+              <ng-template carouselSlide>
+                <img height="400" src="../../assets/img/slider-image-1.jpeg" alt="slide Img Procudt" />
+              </ng-template>
+      
+              <ng-template carouselSlide>
+                <img height="400" src="../../assets/img/slider-image-2.jpeg" alt="slide Img Procudt" />
+              </ng-template>
+      
+              <ng-template carouselSlide>
+                <img height="400" src=".../../assets/img/slider-image-3.jpeg" alt="slide Img Procudt" />
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+          <div class="col-md-3 d-none d-md-block">
+            <img class="w-100" height="200" src="../../assets/img/slider-2.jpeg" alt="slider" />
+            <img class="w-100" height="200" src="../../assets/img/slider-1.jpeg" alt="slider" />
+          </div>
+        </div>
+      </section>
+      
+<h3 class="fw-bold text-center  my-4">Shop Popular Categories</h3> 
+    
+ <app-slider [productCategory]="categoryList" ></app-slider>
+<div class="container my-5">
+  <div class="container h-100">
+  <div class="d-flex justify-content-center h-100">
+
+    <div class="searchbar">
+      <input class="search_input text-white" type="text"  placeholder="Search..." [(ngModel)]="word">
+      <a class="search_icon"><i class="fas fa-search"></i></a>
+    </div>
+  </div>
+  </div>
+</div>
+ 
+
+<div class="container">
+    <div class="row g-4 py-3">
+        <div    *ngFor="let p of productList|search:word" class="col-md-3 ">
+            <div class="item product rounded-3 p-3 position-relative ">
+            
+              <button (click)="addWishlist(p._id)" class="btn  position-absolute top-0 end-0"><i class="fa-solid fs-2 fa-heart text-main"></i></button>
+                <img (click)="scrollToTop()" [routerLink]="['/productdetailes',p._id,p.title]" class="img-fluid"  [src]="p.imageCover" alt="">
+                <p class="text-main ">{{p.category.name}}</p>
+                <p class="fw-bold">{{p.title.split(' ').slice(0, 2).join(' ')}}</p>
+                <div class=" d-flex justify-content-between">
+                    <p>{{ p.price | currency:'EGP ' }} </p>
+
+                    <ul  class="d-flex mb-0  list-unstyled">
+                        <li *ngFor="let num of [1, 2, 3, 4, 5]">
+                            <i *ngIf="num <= p.ratingsAverage"class="fa-solid fa-star"></i>
+                        </li>
+
+                        <li *ngIf="p.ratingsAverage % 1 != 0">
+                            <i class="fas fa-star-half rating-color"></i>
+                          </li>
+                          <span> {{p.ratingsAverage}}</span>
+                    </ul>
+                    
+                
+                </div>
+                <button  (click)="addProductToCart(p._id)" class="btn bg-main text-white w-100">+ Add To Cart</button>
+            </div>
+        
+        
+        </div>
+        </div>
+        
+</div>
+  
+</div>
+</section>
+
+
+

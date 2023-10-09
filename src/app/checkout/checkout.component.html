@@ -1,0 +1,36 @@
+<section class=" pt-5 d-flex justify-content-center align-items-center">
+
+    <div class="container shadow-sm  bg-body-tertiary p-5 rounded-3 my-5">
+
+<h2 class="text-center">shipping Address</h2>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="checkout(checkoutForm)">
+
+    <label for="">Detailes</label>
+    <input placeholder="Detailes..." class="form-control my-2" formControlName="detailes" type="text">
+
+    <p *ngIf="checkoutForm.get('detailes')?.getError('required') && checkoutForm.get('detailes')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+    <p *ngIf="checkoutForm.get('detailes')?.getError('minlength') && checkoutForm.get('detailes')?.touched"  class="text-danger text-capitalize">required min length is 3</p>
+    <p *ngIf="checkoutForm.get('detailes')?.getError('maxlength') && checkoutForm.get('detailes')?.touched"  class="text-danger text-capitalize">required max length is 10</p>
+
+
+    <label for="">Phone</label>
+    <input placeholder="Phone..." class="form-control my-2"  formControlName="phone" type="tel">
+
+    <p *ngIf="checkoutForm.get('phone')?.getError('required') && checkoutForm.get('phone')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+    <p *ngIf="checkoutForm.get('phone')?.getError('pattern') && checkoutForm.get('phone')?.touched"  class="text-danger text-capitalize">please enter correct phone number</p>
+
+    <label for="">City</label>
+    <input placeholder="City..." class="form-control my-2"  formControlName="city" type="text">
+
+    <p *ngIf="checkoutForm.get('city')?.getError('required') && checkoutForm.get('city')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+    <p *ngIf="checkoutForm.get('city')?.getError('minlength') && checkoutForm.get('city')?.touched"  class="text-danger text-capitalize">required min length is 3</p>
+    <p *ngIf="checkoutForm.get('city')?.getError('maxlength') && checkoutForm.get('city')?.touched"  class="text-danger text-capitalize">required max length is 10</p>
+
+    <button [disabled]="!checkoutForm.valid" class="btn bg-main text-white w-50 m-auto my-3 d-flex align-items-center justify-content-center">Next</button>
+</form>
+
+    </div>
+
+</section>
+

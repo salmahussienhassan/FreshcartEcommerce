@@ -1,0 +1,53 @@
+<section class=" pt-5 d-flex justify-content-center align-items-center">
+
+    <div class="container shadow-sm  bg-body-tertiary p-5 rounded-3 my-5">
+    
+        <h1 class="text-center">Register Now</h1>
+        <form (ngSubmit)="signUp(registerForm)"  [formGroup]="registerForm" class="my-2">
+        
+            <label  for="">Name:</label>
+            <input formControlName="name" class="form-control mb-3" type="text">
+        <p *ngIf="registerForm.get('name')?.getError('required') && registerForm.get('name')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+        <p *ngIf="registerForm.get('name')?.getError('minlength') && registerForm.get('name')?.touched"  class="text-danger text-capitalize">required min length is 3</p>
+        <p *ngIf="registerForm.get('name')?.getError('maxlength') && registerForm.get('name')?.touched"  class="text-danger text-capitalize">required max length is 10</p>
+        
+            <label for="">Email:</label>
+            <input formControlName="email" class="form-control mb-3" type="email">
+        
+            <p *ngIf="registerForm.get('email')?.getError('required') && registerForm.get('email')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+        <p *ngIf="registerForm.get('email')?.getError('email') && registerForm.get('email')?.touched"  class="text-danger text-capitalize">please enter correct email</p>
+        
+            <label for="">Password:</label>
+            <input formControlName="password" class="form-control mb-3" type="password">
+        
+            <p *ngIf="registerForm.get('password')?.getError('required') && registerForm.get('password')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+            <p *ngIf="registerForm.get('password')?.getError('minlength') && registerForm.get('password')?.touched"  class="text-danger text-capitalize">required min length is 6</p>
+            <p *ngIf="registerForm.get('password')?.getError('maxlength') && registerForm.get('password')?.touched"  class="text-danger text-capitalize">required max length is 16</p>
+        
+        
+            <label for="">Repassword:</label>
+            <input formControlName="rePassword" class="form-control mb-3" type="password">
+        
+            <p *ngIf="registerForm.get('rePassword')?.getError('required') && registerForm.get('rePassword')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+            <p *ngIf="registerForm.get('rePassword')?.getError('minlength') && registerForm.get('rePassword')?.touched"  class="text-danger text-capitalize">required min length is 6</p>
+            <p *ngIf="registerForm.get('rePassword')?.getError('maxlength') && registerForm.get('rePassword')?.touched"  class="text-danger text-capitalize">required max length is 16</p>
+            <p *ngIf="registerForm.get('rePassword')?.value !== registerForm.get('password')?.value && registerForm.get('rePassword')?.touched"  class="text-danger text-capitalize">repassword  didn't match with password</p>
+        
+        
+            <label for="">Phone:</label>
+            <input formControlName="phone" class="form-control mb-3" type="tel">
+        
+            <p *ngIf="registerForm.get('phone')?.getError('required') && registerForm.get('phone')?.touched"  class="text-danger text-capitalize">please fill out this field</p>
+            <p *ngIf="registerForm.get('phone')?.getError('pattern') && registerForm.get('phone')?.touched"  class="text-danger text-capitalize">please enter correct phone number</p>
+        
+            <button  *ngIf="!isLoading else spinner" [disabled]="!registerForm.valid || registerForm.get('rePassword')?.value !== registerForm.get('password')?.value" class="btn bg-main d-flex justify-content-center align-items-center text-white my-3  ms-auto">Register</button>
+        
+            <ng-template #spinner>
+            <button class="btn bg-main d-flex justify-content-center align-items-center ms-auto text-white my-3  "><i class="fa-solid fa-spinner fa-spin "></i></button>
+        </ng-template>
+        <p class="text-danger text-center text-capitalize">{{errorMessage}}</p>
+        </form>
+        
+        </div>
+
+</section>

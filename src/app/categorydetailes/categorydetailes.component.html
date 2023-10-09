@@ -1,0 +1,22 @@
+<div class="container py-5 mt-5">
+    <div  class="row w-75 m-auto bg-body-secondary rounded-3 shadow-sm d-flex justify-content-center align-items-center p-3">
+        <div class="col-md-4">
+            <img class="w-100 rounded-3" [src]="catDetailes.image" alt="">
+        </div>
+        <div class="col-md-8 ">
+           
+                <h5 class="fw-bold">{{catDetailes.name}}</h5>
+                <p>Sub Categories:</p>
+            
+                <span
+                class="badge bg-secondary me-3"
+                *ngFor="let subCategory of subCat"
+              >
+                {{ subCategory.name }}
+              </span>
+            
+        </div>
+    </div>
+</div>
+
+

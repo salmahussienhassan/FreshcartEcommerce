@@ -1,0 +1,22 @@
+.nav-link {
+  color: black;
+  font-weight: 500;
+}
+
+i {
+  font-size: 19px;
+}
+
+.active {
+  color: white !important;
+  background-color: var(--main-color);
+}
+
+a {
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: var(--main-color);
+  color: white;
+}/*# sourceMappingURL=navbar.component.css.map */

@@ -1,0 +1,12 @@
+<owl-carousel-o [options]="customOptions" carouselClass="owl-theme">
+  <ng-container class="cont" *ngFor="let slide of productCategory">
+    <ng-template carouselSlide [id]="slide._id">
+      <img [src]="slide.image">
+      <h5 class="text-center">{{slide.name}}</h5>
+    </ng-template>
+  </ng-container>
+  <div class="owl-nav">
+    <button class="owl-prev" type="button" title="Previous"><i class="fa fa-angle-left"></i></button>
+    <button class="owl-next" type="button" title="Next"><i class="fa fa-angle-right"></i></button>
+  </div>
+</owl-carousel-o>

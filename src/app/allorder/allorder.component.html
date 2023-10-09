@@ -1,0 +1,46 @@
+<section>
+    <div class="container py-5 my-5 ">
+<div *ngIf="orderArr.length !==0 else empty" class="row my-5 gy-3 p-3 bg-body-secondary rounded-3 shadow-sm">
+<h2 class="text-center">All Orders</h2>
+<div  class="col-md-12 p-3 rounded-2" *ngFor="let order of orderArr; let i=index" >
+    <div class="row align-items-center">
+        <div class="col-md-8">
+<h4 class="text-main">Order {{i+1}}</h4>
+<div  *ngFor="let item of order.cartItems">
+    <div class="d-flex justify-content-start my-3 gap-2">
+        <img  [src]="item.product.imageCover" alt="">
+        <div>
+            <p class="text-main">{{item.product.title}}</p>
+            <p>count: {{item.count}}</p>
+            <p>price: {{item.price}}</p>
+        </div>
+    </div>
+    
+  
+</div>
+        </div>
+        <div class="col-md-4">
+            <div class="border border-1 border-dark-subtle p-3 rounded-3">
+                <p *ngIf="order.isDelivered else Delivered" class="m-0">Is Delivered: <span class="bg-success text-white px-2 rounded-3" >Yes</span></p> 
+               <ng-template #Delivered>
+                <p class="m-0">Is Delivered: <span class="bg-danger text-white px-2 rounded-3" >No</span></p> 
+               </ng-template>
+               
+               <p *ngIf="order.isPaid else Paid" class="m-0">Is Paid: <span class="bg-success text-white px-2 rounded-3" >Yes</span></p> 
+               <ng-template #Paid>
+                <p class="m-0">Is Paid: <span class="bg-danger text-white px-2 rounded-3" >No</span></p> 
+               </ng-template>
+                <p class="m-0">Payment Method Type: card</p>
+                <p class="m-0">totalOrderPrice: 6839</p>
+            </div>
+         
+        </div>
+    </div>
+</div>
+</div>
+<ng-template #empty>
+    <h1 class="my-5 display-1 text-center">Your Orders Is Empty...</h1>
+    </ng-template>
+    
+    </div>
+</section>
